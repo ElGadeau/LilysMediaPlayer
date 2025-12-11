@@ -3,15 +3,46 @@
 
 #include <iostream>
 
-#include <libavcodec/codec.h>
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 #include <Test.h>
 
+
+
 int main()
 {
-    Test test;
+    GLFWwindow* window;
 
-    test.SetNumber(42);
+    if (!glfwInit())
+    {
+        std::cout << "Could not initialize GLFW" << std::endl;
+        return -1;
+    }
 
-    std::cout << test.number << "\n";
+    window = glfwCreateWindow(800, 600, "Window", NULL, NULL);
+    glfwMakeContextCurrent(window);
+
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        glfwTerminate();
+        std::cout << "Could not initialize GLAD" << std::endl;
+        return -1;
+    }
+
+    glClearColor(1, 0, 0, 1);
+
+    while (!glfwWindowShouldClose(window))
+    {
+        glfwPollEvents();
+    
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glfwSwapBuffers(window);
+    }
+
+    glfwTerminate();
+
+    return 0;
 }

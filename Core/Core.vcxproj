@@ -71,24 +71,24 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
-    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(SolutionDir)Dependencies\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
-    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(SolutionDir)Dependencies\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
-    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(SolutionDir)Dependencies\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(SolutionDir)Dependencies\FFMPEG\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(IncludePath)</IncludePath>
     <SourcePath>$(ProjectDir)src;$(SourcePath)</SourcePath>
-    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Dependencies\FFMPEG\lib;$(SolutionDir)Dependencies\GLFW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -101,6 +101,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -116,6 +117,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -129,6 +131,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,10 +147,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Core.cpp" />
+    <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Test.cpp" />
   </ItemGroup>
   <ItemGroup>
