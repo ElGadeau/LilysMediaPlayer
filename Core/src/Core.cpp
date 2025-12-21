@@ -1,48 +1,19 @@
-// Core.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include <stdafx.h>
 
-#include <iostream>
-
-
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-
-#include <Test.h>
-
-
+#include <Rendering/Renderer.h>
 
 int main()
 {
-    GLFWwindow* window;
+    Renderer* renderer = new Renderer();
 
-    if (!glfwInit())
+    if (!renderer->Intialize(800, 600, "Testing Window"))
     {
-        std::cout << "Could not initialize GLFW" << std::endl;
         return -1;
     }
 
-    window = glfwCreateWindow(800, 600, "Window", NULL, NULL);
-    glfwMakeContextCurrent(window);
+    renderer->Start();
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        glfwTerminate();
-        std::cout << "Could not initialize GLAD" << std::endl;
-        return -1;
-    }
-
-    glClearColor(1, 0, 0, 1);
-
-    while (!glfwWindowShouldClose(window))
-    {
-        glfwPollEvents();
-    
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(window);
-    }
-
-    glfwTerminate();
+    renderer->Terminate();
 
     return 0;
 }

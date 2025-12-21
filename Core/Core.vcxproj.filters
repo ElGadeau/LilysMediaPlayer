@@ -18,15 +18,24 @@
     <ClCompile Include="src\Core.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Test.cpp">
+    <ClCompile Include="src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\glad.c">
+    <ClCompile Include="src\Rendering\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Test.h">
+    <ClInclude Include="include\Rendering\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Input\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
