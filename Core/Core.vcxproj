@@ -170,6 +170,9 @@
     <ClInclude Include="include\Rendering\Renderer.h" />
     <ClInclude Include="include\stdafx.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\Shaders\VertexShader.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
