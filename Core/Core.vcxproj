@@ -164,13 +164,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Rendering\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Input\Input.h" />
     <ClInclude Include="include\Rendering\Renderer.h" />
+    <ClInclude Include="include\Rendering\Shader.h" />
     <ClInclude Include="include\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resource\Shaders\FragmentShader.frag" />
     <None Include="Resource\Shaders\VertexShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

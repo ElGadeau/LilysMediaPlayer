@@ -27,6 +27,9 @@
     <ClCompile Include="include\Input\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rendering\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Rendering\Renderer.h">
@@ -38,8 +41,12 @@
     <ClInclude Include="include\Input\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\Rendering\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\Shaders\VertexShader.vert" />
+    <None Include="Resource\Shaders\FragmentShader.frag" />
   </ItemGroup>
 </Project>
