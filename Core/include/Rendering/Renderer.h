@@ -24,4 +24,5 @@ private:
 
     unsigned int VBO;
     unsigned int VAO;
+    unsigned int EBO;
 };
