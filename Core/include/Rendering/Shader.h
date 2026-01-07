@@ -1,6 +1,13 @@
 #pragma once
 #include <stdafx.h>
 
+enum class ShaderType
+{
+    Vertex,
+    Fragment,
+    Program
+};
+
 class Shader
 {
 public:
@@ -17,5 +24,5 @@ public:
 private:
     std::string ReadShaderFile(const char* path);
 
-    bool VerifyShaderCompile(unsigned int shader, const char* shaderType);
+    bool VerifyShaderCompile(unsigned int shader, ShaderType shaderType);
 };

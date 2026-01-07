@@ -20,7 +20,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     glShaderSource(vertexShader, 1, &vertexShaderCode, NULL);
     glCompileShader(vertexShader);
 
-    if (!VerifyShaderCompile(vertexShader, "Vertex"))
+    if (!VerifyShaderCompile(vertexShader, ShaderType::Vertex))
     {
         return;
     }
@@ -34,7 +34,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     glShaderSource(fragmentShader, 1, &fragmentShaderCode, NULL);
     glCompileShader(fragmentShader);
 
-    if (!VerifyShaderCompile(fragmentShader, "Fragement"))
+    if (!VerifyShaderCompile(fragmentShader, ShaderType::Fragment))
     {
         return;
     }
@@ -45,7 +45,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     glAttachShader(ID, fragmentShader);
     glLinkProgram(ID);
 
-    if (!VerifyShaderCompile(ID, "Program"))
+    if (!VerifyShaderCompile(ID, ShaderType::Program))
     {
         return;
     }
@@ -100,16 +100,45 @@ std::string Shader::ReadShaderFile(const char* path)
     return shaderCode;
 }
 
-bool Shader::VerifyShaderCompile(unsigned int shader, const char* shaderType)
+bool Shader::VerifyShaderCompile(unsigned int shader, ShaderType shaderType)
 {
     int success;
     char infoLog[512];
-    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+
+    std::string type;
+
+    switch (shaderType)
+    {
+    case ShaderType::Vertex:
+        type = "Vertex";
+        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+        break;
+
+    case ShaderType::Fragment:
+        type = "Fragment";
+        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+        break;
+
+    case ShaderType::Program:
+        type = "Program";
+        glGetProgramiv(shader, GL_LINK_STATUS, &success);
+        break;
+    }
 
     if (!success)
     {
-        glGetShaderInfoLog(shader, 512, NULL, infoLog);
-        std::cout << "Error loading " << shaderType << " shader : " << infoLog << std::endl;
+        switch (shaderType)
+        {
+        case ShaderType::Vertex:
+        case ShaderType::Fragment:
+            glGetShaderInfoLog(shader, 512, NULL, infoLog);
+            break;
+
+        case ShaderType::Program:
+            glGetProgramInfoLog(shader, 512, NULL, infoLog);
+        }
+
+        std::cout << "Error loading " << type << " shader : " << infoLog << std::endl;
         return false;
     }
 

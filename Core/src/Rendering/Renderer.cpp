@@ -58,6 +58,8 @@ void Renderer::Start()
 
     SetupShader();
 
+    myShader.Use();
+
     while (!glfwWindowShouldClose(window))
     {
         Input::Process(window);
@@ -66,6 +68,7 @@ void Renderer::Start()
         glClear(GL_COLOR_BUFFER_BIT);
 
         myShader.Use();
+
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
@@ -90,14 +93,14 @@ void Renderer::ResizeCallback(GLFWwindow* window, int width, int height)
 void Renderer::SetupShader()
 {
     float verticesTriangle[] = {
-   -0.5f, -0.5f, 0.0f, 1.f, 0.f, 0.f,
-    0.5f, -0.5f, 0.0f, 0.f, 1.f, 0.f,
-    0.0f,  0.5f, 0.0f, 0.f, 0.f, 1.f
+0.5f, -0.5f, 0.0f, 1.f, 0.f, 0.f,
+ -0.5f, -0.5f, 0.0f, 0.f, 1.f, 0.f,
+ 0.0f,  0.5f, 0.0f, 0.f, 0.f, 1.f
     };
 
     // Setup VBO
-    glGenBuffers(1, &VBO);
     glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
