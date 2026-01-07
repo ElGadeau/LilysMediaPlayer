@@ -4,6 +4,10 @@
 #include <GLFW/glfw3.h>
 #include <stb_image.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <Rendering/Renderer.h>
 #include <Input/Input.h>
 #include <Rendering/Shader.h>
@@ -65,6 +69,13 @@ void Renderer::Start()
 
     myShader.SetInt("firstTexture", 0);
     myShader.SetInt("secondTexture", 1);
+
+    glm::mat4 trans(1.f);
+    trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
+    trans = glm::rotate(trans, glm::radians(45.f), glm::vec3(0.f, 0.f, 1.f));
+    trans = glm::translate(trans, glm::vec3(1.f, 0.f, 0.f));
+
+    myShader.SetMatrix4("transform", trans);
 
     while (!glfwWindowShouldClose(window))
     {

@@ -1,6 +1,8 @@
 #pragma once
 #include <stdafx.h>
 
+#include <glm/glm.hpp>
+
 enum class ShaderType
 {
     Vertex,
@@ -20,6 +22,8 @@ public:
     void SetBool(const std::string& name, bool value);
     void SetInt(const std::string& name, int value);
     void SetFloat(const std::string& name, float value);
+    void SetMatrix4(const std::string& name, glm::mat4 value);
+
 
 private:
     std::string ReadShaderFile(const char* path);
