@@ -6,7 +6,6 @@
 
 #include <fstream>
 #include <sstream>
-#include <iostream>
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
@@ -54,6 +53,8 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 }
+
+
 
 void Shader::Use()
 {

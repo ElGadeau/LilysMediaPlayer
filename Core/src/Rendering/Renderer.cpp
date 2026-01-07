@@ -7,6 +7,7 @@
 #include <Rendering/Renderer.h>
 #include <Input/Input.h>
 #include <Rendering/Shader.h>
+#include <Rendering/Texture.h>
 
 Renderer::Renderer()
 {
@@ -55,37 +56,15 @@ bool Renderer::Intialize(int width, int height, const char* windowName)
 void Renderer::Start()
 {
     Shader myShader("Resource/Shaders/VertexShader.vert", "Resource/Shaders/FragmentShader.frag");
+    Texture firstTexture("Resource/Textures/container.jpg");
+    Texture secondTexture("Resource/Textures/wall.jpg");
 
     SetupShader();
 
     myShader.Use();
 
-    // Texture Loading
-    int width, height, nrChannels;
-    unsigned char* textureData = stbi_load("Resource/Textures/wall.jpg", &width, &height, &nrChannels, 0);
-
-    unsigned int texture1;
-    glGenTextures(1, &texture1);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-
-    glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTextureParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    if (textureData)
-    {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, textureData);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-
-    stbi_image_free(textureData);
-
-    // -----
+    myShader.SetInt("firstTexture", 0);
+    myShader.SetInt("secondTexture", 1);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -96,7 +75,9 @@ void Renderer::Start()
 
         myShader.Use();
 
-        glBindTexture(GL_TEXTURE_2D, texture1);
+        firstTexture.Use(GL_TEXTURE0);
+        secondTexture.Use(GL_TEXTURE1);
+
         glBindVertexArray(VAO);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
