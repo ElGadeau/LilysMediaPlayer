@@ -13,6 +13,13 @@
 #include <Rendering/Shader.h>
 #include <Rendering/Texture.h>
 
+
+//Static members
+int Renderer::Width = 0;
+int Renderer::Height = 0;
+float Renderer::screenRatio = 0;
+
+
 Renderer::Renderer()
 {
     std::cout << "Creating Renderer" << std::endl;
@@ -51,6 +58,11 @@ bool Renderer::Intialize(int width, int height, const char* windowName)
         return false;
     }
 
+    Width = width;
+    Height = height;
+
+    screenRatio = (float)Width / (float)Height;
+
     glViewport(0, 0, width, height);
     glfwSetFramebufferSizeCallback(window, ResizeCallback);
 
@@ -72,10 +84,19 @@ void Renderer::Start()
 
     glm::mat4 trans(1.f);
     trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
-    trans = glm::rotate(trans, glm::radians(45.f), glm::vec3(0.f, 0.f, 1.f));
-    trans = glm::translate(trans, glm::vec3(1.f, 0.f, 0.f));
+    trans = glm::rotate(trans, glm::radians(45.f), glm::vec3(0.5f, 0.5f, 0.f));
 
-    myShader.SetMatrix4("transform", trans);
+    myShader.SetMatrix4("model", trans);
+
+
+    glm::mat4 view(1.f);
+    glm::mat4 projection(1.f);
+
+    projection = glm::perspective(glm::radians(45.f), screenRatio, 0.1f, 100.f);
+    view = glm::translate(view, glm::vec3(0.f, 0.f, -3.f));
+
+    myShader.SetMatrix4("projection", projection);
+    myShader.SetMatrix4("view", view);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -108,16 +129,21 @@ void Renderer::Terminate()
 
 void Renderer::ResizeCallback(GLFWwindow* window, int width, int height)
 {
+    Width = width;
+    Height = height;
+
+    screenRatio = (float)Width / (float)Height;
+
     glViewport(0, 0, width, height);
 }
 
 void Renderer::SetupShader()
 {
     float verticesTriangle[] = {
-     0.5f,  0.5f, 0.0f,    1.f, 0.f, 0.f,    1.f, 1.f,
-     0.5f, -0.5f, 0.0f,    0.f, 1.f, 0.f,    1.f, 0.f,
-    -0.5f, -0.5f, 0.0f,    0.f, 0.f, 1.f,    0.f, 0.f,
-    -0.5f,  0.5f, 0.0f,    0.f, 1.f, 0.f,    0.f, 1.f
+     0.5f,  0.5f, 0.0f,    1.f, 1.f,
+     0.5f, -0.5f, 0.0f,    1.f, 0.f,
+    -0.5f, -0.5f, 0.0f,    0.f, 0.f,
+    -0.5f,  0.5f, 0.0f,    0.f, 1.f
     };
 
     unsigned int indices[] = {
@@ -138,14 +164,10 @@ void Renderer::SetupShader()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Setup the vertex attribute pointer for position
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    // Setup the vertex attribut pointer for color
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
     // Setup the vertex attribut pointer for texture
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 }

@@ -25,4 +25,8 @@ private:
     unsigned int VBO;
     unsigned int VAO;
     unsigned int EBO;
+
+    static int Width;
+    static int Height;
+    static float screenRatio;
 };
