@@ -66,6 +66,8 @@ bool Renderer::Intialize(int width, int height, const char* windowName)
     glViewport(0, 0, width, height);
     glfwSetFramebufferSizeCallback(window, ResizeCallback);
 
+    glEnable(GL_DEPTH_TEST);
+
     return true;
 }
 
@@ -82,13 +84,6 @@ void Renderer::Start()
     myShader.SetInt("firstTexture", 0);
     myShader.SetInt("secondTexture", 1);
 
-    glm::mat4 trans(1.f);
-    trans = glm::scale(trans, glm::vec3(0.5f, 0.5f, 0.5f));
-    trans = glm::rotate(trans, glm::radians(45.f), glm::vec3(0.5f, 0.5f, 0.f));
-
-    myShader.SetMatrix4("model", trans);
-
-
     glm::mat4 view(1.f);
     glm::mat4 projection(1.f);
 
@@ -103,7 +98,7 @@ void Renderer::Start()
         Input::Process(window);
 
         glClearColor(0.2, 0.3, 0.3, 1);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         myShader.Use();
 
@@ -111,8 +106,16 @@ void Renderer::Start()
         secondTexture.Use(GL_TEXTURE1);
 
         glBindVertexArray(VAO);
-        //glDrawArrays(GL_TRIANGLES, 0, 3);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        glm::mat4 model(1.f);
+
+        model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(1.f, 0.3f, 0.5f));
+
+        myShader.SetMatrix4("model", model);
+
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         glfwPollEvents();
         glfwSwapBuffers(window);
@@ -139,17 +142,63 @@ void Renderer::ResizeCallback(GLFWwindow* window, int width, int height)
 
 void Renderer::SetupShader()
 {
-    float verticesTriangle[] = {
-     0.5f,  0.5f, 0.0f,    1.f, 1.f,
-     0.5f, -0.5f, 0.0f,    1.f, 0.f,
-    -0.5f, -0.5f, 0.0f,    0.f, 0.f,
-    -0.5f,  0.5f, 0.0f,    0.f, 1.f
+    //float verticesTriangle[] = {
+    // 0.5f,  0.5f, 0.0f,    1.f, 1.f,
+    // 0.5f, -0.5f, 0.0f,    1.f, 0.f,
+    //-0.5f, -0.5f, 0.0f,    0.f, 0.f,
+    //-0.5f,  0.5f, 0.0f,    0.f, 1.f
+    //};
+
+    float vertices[] = {
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
     };
 
-    unsigned int indices[] = {
-        0, 1, 3,
-        1, 2, 3
-    };
+    //unsigned int indices[] = {
+    //    0, 1, 3,
+    //    1, 2, 3
+    //};
+
+
 
     // Setup VBO
     glGenVertexArrays(1, &VAO);
@@ -158,10 +207,10 @@ void Renderer::SetupShader()
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesTriangle), verticesTriangle, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    //glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Setup the vertex attribute pointer for position
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
