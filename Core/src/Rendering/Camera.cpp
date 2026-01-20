@@ -23,7 +23,7 @@ void Camera::LookAt(glm::vec3 target)
 
 void Camera::Move(glm::vec3 newPosition)
 {
-	position = newPosition;
+	position += newPosition;
 }
 
 void Camera::UpdatePerspective(float cameraRatio)

@@ -3,6 +3,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include <Rendering/Camera.h>
+
 class Input
 {
 public:
@@ -10,5 +12,5 @@ public:
     ~Input();
 
     void Initialize();
-    static void Process(GLFWwindow* window);
+    static void Process(GLFWwindow* window, Camera* camera);
 };

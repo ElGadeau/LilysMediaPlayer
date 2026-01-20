@@ -14,6 +14,8 @@
 #include <Rendering/Texture.h>
 #include <Rendering/Camera.h>
 
+#include <Utils/Time.h>
+
 //Static members
 int Renderer::Width = 0;
 int Renderer::Height = 0;
@@ -73,11 +75,27 @@ bool Renderer::Intialize(int width, int height, const char* windowName)
 
 void Renderer::Start()
 {
+    Time().CalculateDeltaTime();
+
+    glm::vec3 cubePositions[] = {
+    glm::vec3(0.0f,  0.0f,  0.0f),
+    glm::vec3(2.0f,  5.0f, -15.0f),
+    glm::vec3(-1.5f, -2.2f, -2.5f),
+    glm::vec3(-3.8f, -2.0f, -12.3f),
+    glm::vec3(2.4f, -0.4f, -3.5f),
+    glm::vec3(-1.7f,  3.0f, -7.5f),
+    glm::vec3(1.3f, -2.0f, -2.5f),
+    glm::vec3(1.5f,  2.0f, -2.5f),
+    glm::vec3(1.5f,  0.2f, -1.5f),
+    glm::vec3(-1.3f,  1.0f, -1.5f)
+    };
+
+
     Shader myShader("Resource/Shaders/VertexShader.vert", "Resource/Shaders/FragmentShader.frag");
     Texture firstTexture("Resource/Textures/container.jpg");
     Texture secondTexture("Resource/Textures/wall.jpg");
 
-    Camera myCamera(glm::vec3(0.f, 0.f, 6.f), glm::vec3(0.f, 0.f, 0.f), screenRatio, 90.f);
+    Camera myCamera(glm::vec3(0.f, 0.f, 10.f), glm::vec3(0.f, 0.f, 0.f), screenRatio, 90.f);
 
     SetupShader();
 
@@ -91,12 +109,12 @@ void Renderer::Start()
     myShader.SetMatrix4("view", myCamera.GetView());
 
 
-    const float radius = 3.f;
+    const float radius = 10.f;
 
 
     while (!glfwWindowShouldClose(window))
     {
-        Input::Process(window);
+        Input::Process(window, &myCamera);
 
         glClearColor(0.2, 0.3, 0.3, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -108,23 +126,24 @@ void Renderer::Start()
 
         glBindVertexArray(VAO);
 
-        float camX = sin(glfwGetTime()) * radius;
-        float camZ = cos(glfwGetTime()) * radius;
-
-        myCamera.Move(glm::vec3(camX, 0.f, camZ));
-
-        myCamera.LookAt(glm::vec3(0.f, 0.f, 0.f));
+        myCamera.LookAt(myCamera.GetPosition() + myCamera.GetForward());
         myShader.SetMatrix4("view", myCamera.GetView());
-
-        glm::mat4 model(1.f);
-
-        //model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(1.f, 0.3f, 0.5f));
-
-        myShader.SetMatrix4("model", model);
 
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        int cubes = sizeof(cubePositions) / sizeof(glm::vec3);
+
+        for (unsigned int i = 0; i < cubes; i++)
+        {
+            glm::mat4 model = glm::mat4(1.f);
+            model = glm::translate(model, cubePositions[i]);
+            float angle = 20.0f * i;
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            myShader.SetMatrix4("model", model);
+
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+
 
         glfwPollEvents();
         glfwSwapBuffers(window);
@@ -196,10 +215,11 @@ void Renderer::SetupShader()
     };
 
 
+
     // Setup VBO
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
+    //glGenBuffers(1, &EBO);
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -212,7 +232,7 @@ void Renderer::SetupShader()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-    // Setup the vertex attribut pointer for texture
+    // Setup the vertex attribute pointer for texture
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
 }
