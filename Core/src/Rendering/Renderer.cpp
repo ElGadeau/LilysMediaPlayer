@@ -12,7 +12,7 @@
 #include <Input/Input.h>
 #include <Rendering/Shader.h>
 #include <Rendering/Texture.h>
-
+#include <Rendering/Camera.h>
 
 //Static members
 int Renderer::Width = 0;
@@ -77,6 +77,8 @@ void Renderer::Start()
     Texture firstTexture("Resource/Textures/container.jpg");
     Texture secondTexture("Resource/Textures/wall.jpg");
 
+    Camera myCamera(glm::vec3(0.f, 0.f, 6.f));
+
     SetupShader();
 
     myShader.Use();
@@ -88,10 +90,14 @@ void Renderer::Start()
     glm::mat4 projection(1.f);
 
     projection = glm::perspective(glm::radians(45.f), screenRatio, 0.1f, 100.f);
-    view = glm::translate(view, glm::vec3(0.f, 0.f, -3.f));
+    view = myCamera.LookAt(glm::vec3(0.f, 0.f, 0.f));
 
     myShader.SetMatrix4("projection", projection);
     myShader.SetMatrix4("view", view);
+
+
+    const float radius = 10.f;
+
 
     while (!glfwWindowShouldClose(window))
     {
@@ -107,9 +113,20 @@ void Renderer::Start()
 
         glBindVertexArray(VAO);
 
+
+        float camX = sin(glfwGetTime()) * radius;
+        float camZ = cos(glfwGetTime()) * radius;
+
+        myCamera.Move(glm::vec3(camX, 0.f, camZ));
+
+        glm::vec3 camPosition = myCamera.GetPosition();
+
+        view = myCamera.LookAt(glm::vec3(0.f, 0.f, 0.f));
+        myShader.SetMatrix4("view", view);
+
         glm::mat4 model(1.f);
 
-        model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(1.f, 0.3f, 0.5f));
+        //model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(1.f, 0.3f, 0.5f));
 
         myShader.SetMatrix4("model", model);
 
@@ -142,13 +159,6 @@ void Renderer::ResizeCallback(GLFWwindow* window, int width, int height)
 
 void Renderer::SetupShader()
 {
-    //float verticesTriangle[] = {
-    // 0.5f,  0.5f, 0.0f,    1.f, 1.f,
-    // 0.5f, -0.5f, 0.0f,    1.f, 0.f,
-    //-0.5f, -0.5f, 0.0f,    0.f, 0.f,
-    //-0.5f,  0.5f, 0.0f,    0.f, 1.f
-    //};
-
     float vertices[] = {
     -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
      0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -192,12 +202,6 @@ void Renderer::SetupShader()
     -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
     };
-
-    //unsigned int indices[] = {
-    //    0, 1, 3,
-    //    1, 2, 3
-    //};
-
 
 
     // Setup VBO
