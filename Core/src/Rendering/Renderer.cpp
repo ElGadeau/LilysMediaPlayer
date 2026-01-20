@@ -77,7 +77,7 @@ void Renderer::Start()
     Texture firstTexture("Resource/Textures/container.jpg");
     Texture secondTexture("Resource/Textures/wall.jpg");
 
-    Camera myCamera(glm::vec3(0.f, 0.f, 6.f));
+    Camera myCamera(glm::vec3(0.f, 0.f, 6.f), glm::vec3(0.f, 0.f, 0.f), screenRatio, 90.f);
 
     SetupShader();
 
@@ -86,17 +86,12 @@ void Renderer::Start()
     myShader.SetInt("firstTexture", 0);
     myShader.SetInt("secondTexture", 1);
 
-    glm::mat4 view(1.f);
-    glm::mat4 projection(1.f);
 
-    projection = glm::perspective(glm::radians(45.f), screenRatio, 0.1f, 100.f);
-    view = myCamera.LookAt(glm::vec3(0.f, 0.f, 0.f));
-
-    myShader.SetMatrix4("projection", projection);
-    myShader.SetMatrix4("view", view);
+    myShader.SetMatrix4("projection", myCamera.GetPerspective());
+    myShader.SetMatrix4("view", myCamera.GetView());
 
 
-    const float radius = 10.f;
+    const float radius = 3.f;
 
 
     while (!glfwWindowShouldClose(window))
@@ -113,16 +108,13 @@ void Renderer::Start()
 
         glBindVertexArray(VAO);
 
-
         float camX = sin(glfwGetTime()) * radius;
         float camZ = cos(glfwGetTime()) * radius;
 
         myCamera.Move(glm::vec3(camX, 0.f, camZ));
 
-        glm::vec3 camPosition = myCamera.GetPosition();
-
-        view = myCamera.LookAt(glm::vec3(0.f, 0.f, 0.f));
-        myShader.SetMatrix4("view", view);
+        myCamera.LookAt(glm::vec3(0.f, 0.f, 0.f));
+        myShader.SetMatrix4("view", myCamera.GetView());
 
         glm::mat4 model(1.f);
 
