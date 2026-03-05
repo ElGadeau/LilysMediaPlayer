@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 4.2)
+
 file(GLOB ROOT_SOURCE *.cpp)
 file(GLOB ROOT_INLINE *.inl)
 file(GLOB ROOT_HEADER *.hpp)

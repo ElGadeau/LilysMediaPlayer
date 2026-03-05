@@ -1,0 +1,12 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/cmake_install.cmake",
+		"/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/cmake_install.cmake",
+		"/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLAD/cmake_install.cmake",
+		"/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLFW/cmake_install.cmake",
+		"/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLM/include/glm/cmake_install.cmake",
+		"/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/STB_Image/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

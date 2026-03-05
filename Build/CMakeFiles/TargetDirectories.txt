@@ -1,0 +1,16 @@
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles/GameEngine.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles/edit_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles/rebuild_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/CMakeFiles/edit_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/CMakeFiles/rebuild_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLAD/CMakeFiles/GLAD.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLAD/CMakeFiles/edit_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLAD/CMakeFiles/rebuild_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLFW/CMakeFiles/GLFW.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLFW/CMakeFiles/edit_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLFW/CMakeFiles/rebuild_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLM/include/glm/CMakeFiles/edit_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/GLM/include/glm/CMakeFiles/rebuild_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/STB_Image/CMakeFiles/STB_IMAGE.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/STB_Image/CMakeFiles/edit_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/Dependencies/STB_Image/CMakeFiles/rebuild_cache.dir

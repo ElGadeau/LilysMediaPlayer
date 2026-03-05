@@ -1,0 +1,2 @@
+/usr/bin/ar qc libGLFW.a CMakeFiles/GLFW.dir/src/glfw.cpp.o
+/usr/bin/ranlib libGLFW.a

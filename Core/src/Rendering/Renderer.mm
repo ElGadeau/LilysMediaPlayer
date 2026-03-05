@@ -1,20 +1,32 @@
 #include <stdafx.h>
 
-#include <glad/glad.h>
+
+#include "glad/glad.h"
+
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#include <stb_image.h>
+#define GLFW_EXPOSE_NATIVE_COCOA
+#include <GLFW/glfw3native.h>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <Metal/Metal.hpp>
+#include <Metal/Metal.h>
+#include <QuartzCore/CAMetalLayer.hpp>
+#include <QuartzCore/CAMetalLayer.h>
+#include <QuartzCore/QuartzCore.hpp>
 
-#include <Rendering/Renderer.h>
-#include <Input/Input.h>
-#include <Rendering/Shader.h>
-#include <Rendering/Texture.h>
-#include <Rendering/Camera.h>
+#include "stb_image.h"
 
-#include <Utils/Time.h>
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+
+#include "Rendering/Renderer.h"
+#include "Input/Input.h"
+#include "Rendering/Shader.h"
+#include "Rendering/Texture.h"
+#include "Rendering/Camera.h"
+
+#include "Utils/Time.h"
 
 //Static members
 int Renderer::Width = 0;
@@ -39,8 +51,8 @@ bool Renderer::Intialize(int width, int height, const char* windowName)
         return false;
     }
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 

@@ -1,0 +1,3 @@
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Dependencies/GLAD/Build/CMakeFiles/glad.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Dependencies/GLAD/Build/CMakeFiles/edit_cache.dir
+/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Dependencies/GLAD/Build/CMakeFiles/rebuild_cache.dir
