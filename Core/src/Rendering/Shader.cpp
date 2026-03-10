@@ -8,12 +8,14 @@
 
 #include <fstream>
 #include <sstream>
+#include <filesystem>
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
 
     // Setup Vertex Shader
     std::string sourceVertexShaderCode = ReadShaderFile(vertexPath);
+
     const char* vertexShaderCode = sourceVertexShaderCode.c_str();
 
     unsigned int vertexShader;
@@ -88,11 +90,20 @@ std::string Shader::ReadShaderFile(const char* path)
     std::string shaderCode;
     std::ifstream shaderFile;
 
-    shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    shaderFile.exceptions(std::ifstream::badbit);
+
+    std::cout << "Opening file located at: " << std::filesystem::absolute(path) << std::endl;
 
     try
     {
         shaderFile.open(path);
+
+        if (!shaderFile.is_open())
+        {
+            std::cout << "could not open file: " << std::filesystem::absolute(path) << std::endl;
+            return NULL;
+        }
+
         std::stringstream shaderStream;
         shaderStream << shaderFile.rdbuf();
         shaderFile.close();
@@ -110,6 +121,7 @@ std::string Shader::ReadShaderFile(const char* path)
 
 bool Shader::VerifyShaderCompile(unsigned int shader, ShaderType shaderType)
 {
+    std::cout << "Verifying shader" << std::endl;
     int success;
     char infoLog[512];
 
@@ -150,5 +162,6 @@ bool Shader::VerifyShaderCompile(unsigned int shader, ShaderType shaderType)
         return false;
     }
 
+    std::cout << "success" << std::endl;
     return true;
 }

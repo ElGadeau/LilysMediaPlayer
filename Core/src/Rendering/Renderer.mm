@@ -51,8 +51,8 @@ bool Renderer::Intialize(int width, int height, const char* windowName)
         return false;
     }
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
@@ -103,18 +103,20 @@ void Renderer::Start()
     };
 
 
-    Shader myShader("Resource/Shaders/VertexShader.vert", "Resource/Shaders/FragmentShader.frag");
-    Texture firstTexture("Resource/Textures/container.jpg");
-    Texture secondTexture("Resource/Textures/wall.jpg");
+    Shader myShader("Core/Resource/Shaders/VertexShader.vert", "Core/Resource/Shaders/FragmentShader.frag");
+    //Texture firstTexture("Core/Resource/Textures/container.jpg");
+    //Texture secondTexture("Core/Resource/Textures/wall.jpg");
 
     Camera myCamera(glm::vec3(0.f, 0.f, 10.f), glm::vec3(0.f, 0.f, 0.f), screenRatio, 90.f);
+
+    std::cout << "reached" << std::endl;
 
     SetupShader();
 
     myShader.Use();
 
-    myShader.SetInt("firstTexture", 0);
-    myShader.SetInt("secondTexture", 1);
+    //myShader.SetInt("firstTexture", 0);
+    //myShader.SetInt("secondTexture", 1);
 
 
     myShader.SetMatrix4("projection", myCamera.GetPerspective());
@@ -133,8 +135,8 @@ void Renderer::Start()
 
         myShader.Use();
 
-        firstTexture.Use(GL_TEXTURE0);
-        secondTexture.Use(GL_TEXTURE1);
+        //firstTexture.Use(GL_TEXTURE0);
+        //secondTexture.Use(GL_TEXTURE1);
 
         glBindVertexArray(VAO);
 
