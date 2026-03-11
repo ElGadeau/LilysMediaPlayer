@@ -247,53 +247,29 @@ Core/src/Rendering/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/Camera.cpp.s
 .PHONY : Core/src/Rendering/Camera.cpp.s
 
-Core/src/Rendering/Renderer.o: Core/src/Rendering/Renderer.mm.o
+Core/src/Rendering/Renderer.o: Core/src/Rendering/Renderer.cpp.o
 .PHONY : Core/src/Rendering/Renderer.o
 
 # target to build an object file
-Core/src/Rendering/Renderer.mm.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o
-.PHONY : Core/src/Rendering/Renderer.mm.o
+Core/src/Rendering/Renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o
+.PHONY : Core/src/Rendering/Renderer.cpp.o
 
-Core/src/Rendering/Renderer.i: Core/src/Rendering/Renderer.mm.i
+Core/src/Rendering/Renderer.i: Core/src/Rendering/Renderer.cpp.i
 .PHONY : Core/src/Rendering/Renderer.i
 
 # target to preprocess a source file
-Core/src/Rendering/Renderer.mm.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.i
-.PHONY : Core/src/Rendering/Renderer.mm.i
+Core/src/Rendering/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.i
+.PHONY : Core/src/Rendering/Renderer.cpp.i
 
-Core/src/Rendering/Renderer.s: Core/src/Rendering/Renderer.mm.s
+Core/src/Rendering/Renderer.s: Core/src/Rendering/Renderer.cpp.s
 .PHONY : Core/src/Rendering/Renderer.s
 
 # target to generate assembly for a file
-Core/src/Rendering/Renderer.mm.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.s
-.PHONY : Core/src/Rendering/Renderer.mm.s
-
-Core/src/Rendering/RenderingLayer.o: Core/src/Rendering/RenderingLayer.cpp.o
-.PHONY : Core/src/Rendering/RenderingLayer.o
-
-# target to build an object file
-Core/src/Rendering/RenderingLayer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o
-.PHONY : Core/src/Rendering/RenderingLayer.cpp.o
-
-Core/src/Rendering/RenderingLayer.i: Core/src/Rendering/RenderingLayer.cpp.i
-.PHONY : Core/src/Rendering/RenderingLayer.i
-
-# target to preprocess a source file
-Core/src/Rendering/RenderingLayer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.i
-.PHONY : Core/src/Rendering/RenderingLayer.cpp.i
-
-Core/src/Rendering/RenderingLayer.s: Core/src/Rendering/RenderingLayer.cpp.s
-.PHONY : Core/src/Rendering/RenderingLayer.s
-
-# target to generate assembly for a file
-Core/src/Rendering/RenderingLayer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.s
-.PHONY : Core/src/Rendering/RenderingLayer.cpp.s
+Core/src/Rendering/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GameEngine.dir/build.make CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.s
+.PHONY : Core/src/Rendering/Renderer.cpp.s
 
 Core/src/Rendering/Shader.o: Core/src/Rendering/Shader.cpp.o
 .PHONY : Core/src/Rendering/Shader.o
@@ -392,9 +368,6 @@ help:
 	@echo "... Core/src/Rendering/Renderer.o"
 	@echo "... Core/src/Rendering/Renderer.i"
 	@echo "... Core/src/Rendering/Renderer.s"
-	@echo "... Core/src/Rendering/RenderingLayer.o"
-	@echo "... Core/src/Rendering/RenderingLayer.i"
-	@echo "... Core/src/Rendering/RenderingLayer.s"
 	@echo "... Core/src/Rendering/Shader.o"
 	@echo "... Core/src/Rendering/Shader.i"
 	@echo "... Core/src/Rendering/Shader.s"

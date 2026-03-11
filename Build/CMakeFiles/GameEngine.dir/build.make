@@ -114,38 +114,24 @@ CMakeFiles/GameEngine.dir/Core/src/Rendering/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GameEngine.dir/Core/src/Rendering/Camera.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Camera.cpp -o CMakeFiles/GameEngine.dir/Core/src/Rendering/Camera.cpp.s
 
-CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o: CMakeFiles/GameEngine.dir/flags.make
-CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o: /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.mm
-CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o -MF CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o.d -o CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o -c /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.mm
+CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o: CMakeFiles/GameEngine.dir/flags.make
+CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o: /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.cpp
+CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o -MF CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o.d -o CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o -c /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.cpp
 
-CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.mm > CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.i
+CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.cpp > CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.i
 
-CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.mm -o CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.s
-
-CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o: CMakeFiles/GameEngine.dir/flags.make
-CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o: /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/RenderingLayer.cpp
-CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o -MF CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o.d -o CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o -c /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/RenderingLayer.cpp
-
-CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/RenderingLayer.cpp > CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.i
-
-CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/RenderingLayer.cpp -o CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.s
+CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Renderer.cpp -o CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.s
 
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o: CMakeFiles/GameEngine.dir/flags.make
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o: /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Shader.cpp
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o -MF CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o.d -o CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o -c /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Shader.cpp
 
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.i: cmake_force
@@ -159,7 +145,7 @@ CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.s: cmake_force
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o: CMakeFiles/GameEngine.dir/flags.make
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o: /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Texture.cpp
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o -MF CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o.d -o CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o -c /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Rendering/Texture.cpp
 
 CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.i: cmake_force
@@ -173,7 +159,7 @@ CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.s: cmake_force
 CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o: CMakeFiles/GameEngine.dir/flags.make
 CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o: /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Utils/Time.cpp
 CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o: CMakeFiles/GameEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o -MF CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o.d -o CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o -c /Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Core/src/Utils/Time.cpp
 
 CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.i: cmake_force
@@ -189,8 +175,7 @@ GameEngine_OBJECTS = \
 "CMakeFiles/GameEngine.dir/Core/src/Core.cpp.o" \
 "CMakeFiles/GameEngine.dir/Core/src/Input/Input.cpp.o" \
 "CMakeFiles/GameEngine.dir/Core/src/Rendering/Camera.cpp.o" \
-"CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o" \
-"CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o" \
+"CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o" \
 "CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o" \
 "CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o" \
 "CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o"
@@ -201,8 +186,7 @@ GameEngine_EXTERNAL_OBJECTS =
 GameEngine: CMakeFiles/GameEngine.dir/Core/src/Core.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/Core/src/Input/Input.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/Core/src/Rendering/Camera.cpp.o
-GameEngine: CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.mm.o
-GameEngine: CMakeFiles/GameEngine.dir/Core/src/Rendering/RenderingLayer.cpp.o
+GameEngine: CMakeFiles/GameEngine.dir/Core/src/Rendering/Renderer.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/Core/src/Rendering/Shader.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/Core/src/Rendering/Texture.cpp.o
 GameEngine: CMakeFiles/GameEngine.dir/Core/src/Utils/Time.cpp.o
@@ -212,7 +196,7 @@ GameEngine: Dependencies/GLFW/libGLFW.a
 GameEngine: Dependencies/STB_Image/libSTB_IMAGE.a
 GameEngine: /opt/homebrew/lib/libglfw.3.4.dylib
 GameEngine: CMakeFiles/GameEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable GameEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/lily-mac/Desktop/CodingProject/LilysMediaPlayer/Build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable GameEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GameEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

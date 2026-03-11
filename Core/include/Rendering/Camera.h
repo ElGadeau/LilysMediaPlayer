@@ -18,7 +18,15 @@ public:
 	glm::mat4 GetPerspective() { return perspectiveMat; }
 	glm::mat4 GetView() { return viewMat; }
 
+	float GetYaw() { return yaw; }
+	float SetYaw(float newYaw) { yaw = newYaw; }
+
+	float GetPitch() { return pitch; }
+	float SetPitch(float newPitch) { pitch = newPitch; }
+
 	void UpdatePerspective(float cameraRatio);
+
+	void Update();
 
 private:
 	glm::vec3 position;
@@ -27,7 +35,11 @@ private:
 	glm::vec3 right;
 	glm::vec3 forward;
 
+	float yaw;
+	float pitch;
 
 	glm::mat4 viewMat;
 	glm::mat4 perspectiveMat;
+
+	void CalculateVectors();
 };

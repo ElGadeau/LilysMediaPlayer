@@ -12,8 +12,7 @@ target_sources(GameEngine
         Core/src/Input/Input.cpp
 
         Core/src/Rendering/Camera.cpp
-        Core/src/Rendering/Renderer.mm
-        Core/src/Rendering/RenderingLayer.cpp
+        Core/src/Rendering/Renderer.cpp
         Core/src/Rendering/Shader.cpp
         Core/src/Rendering/Texture.cpp
 
@@ -31,7 +30,6 @@ target_sources(GameEngine
 
             Core/include/Rendering/Camera.h
             Core/include/Rendering/Renderer.h
-            Core/include/Rendering/RenderingLayer.h
             Core/include/Rendering/Shader.h
             Core/include/Rendering/Texture.h
 

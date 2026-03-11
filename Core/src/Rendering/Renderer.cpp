@@ -3,16 +3,7 @@
 
 #include "glad/glad.h"
 
-#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#define GLFW_EXPOSE_NATIVE_COCOA
-#include <GLFW/glfw3native.h>
-
-#include <Metal/Metal.hpp>
-#include <Metal/Metal.h>
-#include <QuartzCore/CAMetalLayer.hpp>
-#include <QuartzCore/CAMetalLayer.h>
-#include <QuartzCore/QuartzCore.hpp>
 
 #include "stb_image.h"
 
@@ -80,7 +71,16 @@ bool Renderer::Intialize(int width, int height, const char* windowName)
     glViewport(0, 0, width, height);
     glfwSetFramebufferSizeCallback(window, ResizeCallback);
 
+
     glEnable(GL_DEPTH_TEST);
+
+    myCamera = new Camera(glm::vec3(0.f, 0.f, 10.f), glm::vec3(0.f, 0.f, 0.f), screenRatio, 90.f);
+
+    input = new Input();
+    input->Initialize(window, myCamera);
+
+    glfwSetWindowUserPointer(window, input);
+    glfwSetCursorPosCallback(window, Input::MouseCallback);
 
     return true;
 }
@@ -104,23 +104,20 @@ void Renderer::Start()
 
 
     Shader myShader("Core/Resource/Shaders/VertexShader.vert", "Core/Resource/Shaders/FragmentShader.frag");
-    //Texture firstTexture("Core/Resource/Textures/container.jpg");
-    //Texture secondTexture("Core/Resource/Textures/wall.jpg");
+    Texture firstTexture("Core/Resource/Textures/container.jpg");
+    Texture secondTexture("Core/Resource/Textures/wall.jpg");
 
-    Camera myCamera(glm::vec3(0.f, 0.f, 10.f), glm::vec3(0.f, 0.f, 0.f), screenRatio, 90.f);
-
-    std::cout << "reached" << std::endl;
 
     SetupShader();
 
     myShader.Use();
 
-    //myShader.SetInt("firstTexture", 0);
-    //myShader.SetInt("secondTexture", 1);
+    myShader.SetInt("firstTexture", 0);
+    myShader.SetInt("secondTexture", 1);
 
 
-    myShader.SetMatrix4("projection", myCamera.GetPerspective());
-    myShader.SetMatrix4("view", myCamera.GetView());
+    myShader.SetMatrix4("projection", myCamera->GetPerspective());
+    myShader.SetMatrix4("view", myCamera->GetView());
 
 
     const float radius = 10.f;
@@ -128,20 +125,20 @@ void Renderer::Start()
 
     while (!glfwWindowShouldClose(window))
     {
-        Input::Process(window, &myCamera);
+        input->Process();
 
         glClearColor(0.2, 0.3, 0.3, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         myShader.Use();
 
-        //firstTexture.Use(GL_TEXTURE0);
-        //secondTexture.Use(GL_TEXTURE1);
+        firstTexture.Use(GL_TEXTURE0);
+        secondTexture.Use(GL_TEXTURE1);
 
         glBindVertexArray(VAO);
 
-        myCamera.LookAt(myCamera.GetPosition() + myCamera.GetForward());
-        myShader.SetMatrix4("view", myCamera.GetView());
+        myCamera->LookAt(myCamera->GetPosition() + myCamera->GetForward());
+        myShader.SetMatrix4("view", myCamera->GetView());
 
         glDrawArrays(GL_TRIANGLES, 0, 36);
 

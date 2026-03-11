@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GLFW/glfw3.h"
+#include "Input/Input.h"
 
 class Renderer
 {
@@ -16,6 +17,8 @@ private:
     
     // Methods
     GLFWwindow* window;
+    Input* input;
+    Camera* myCamera;
 
     static void ResizeCallback(GLFWwindow* window, int width, int height);
     void SetupShader();
